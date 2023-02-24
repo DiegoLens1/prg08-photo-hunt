@@ -3,6 +3,6 @@
     "theme_color": "#2196f3",
     "background_color": "#2196f3",
     "display": "fullscreen",
-    "scope": "/",
-    "start_url": "/"
+    "scope": "/1000200/prg08-photo-hunt",
+    "start_url": "/1000200/prg08-photo-hunt"
   }
