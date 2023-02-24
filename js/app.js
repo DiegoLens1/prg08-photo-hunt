@@ -80,8 +80,3 @@ function modelLoaded() {
   console.log('Model Loaded!');
   loadCustomModel()
 }
-
-// Triggers when the video is ready
-function    videoReady() {
-  console.log('The video is ready!');
-}
