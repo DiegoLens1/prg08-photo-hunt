@@ -3,6 +3,8 @@ const objectiveDiv = document.getElementById("objective")
 const instructions = document.getElementById("instructions")
 let objective = ""
 const randomiserArray = ["dog", "cat", "bird"]
+let score = 0
+const scoreDiv = document.getElementById("score")
 const input = document.getElementById("file")
 const img = document.getElementById("output")
 const test = document.getElementById("test")
@@ -26,6 +28,7 @@ function startGame() {
     objectiveDiv.innerHTML = "Take a picture of a " + objective
     speak("Take a picture of a " + objective)
     objectiveDiv.style.display = "block"
+    scoreDiv.style.display = "block"    
 
     input.style.display = "inline-block"
 }
@@ -54,6 +57,8 @@ function classify() {
         if(result[0].label == objective){
             objectiveDiv.innerHTML = "Correct! I am "+result[0].confidence.toString().substring(2,4)+"% positive that that is a "+result[0].label+"."
             speak("Correct! I am "+result[0].confidence.toString().substring(2,4)+"% positive that that is a "+result[0].label+".")
+            score++
+            scoreDiv.innerHTML = "Score: "+score
         }else{
             objectiveDiv.innerHTML = "That is not a "+objective+". I am "+result[0].confidence.toString().substring(2,4)+"% positive that that is a "+result[0].label+"."
             speak("That is not a "+objective+". I am "+result[0].confidence.toString().substring(2,4)+"% positive that that is a "+result[0].label+".")

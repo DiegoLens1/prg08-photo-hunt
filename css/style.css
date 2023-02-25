@@ -8,13 +8,6 @@ body {
     font-family: sans-serif;
 }
 
-#label {
-    width: 533px;
-    height: 20px;
-    color: white;
-    background-color: black;
-}
-
 button {
     background-color: lightblue;
     padding: 8px 12px;
@@ -29,11 +22,6 @@ button:hover {
     color: white;
 }
 
-/* flip the video image */
-video {
-    transform: scaleX(-1);
-}
-
 #wrapper {
     height: 100%;
     display: flex;
@@ -41,8 +29,12 @@ video {
     flex-direction: column;
 }
 
-#objective, #file, #retry, #output {
+#objective, #file, #retry, #output, #score {
     display: none;
+}
+
+#score {
+    font-weight: bold;
 }
 
 #instructions {
