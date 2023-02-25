@@ -64,6 +64,12 @@ function classify() {
 let synth = window.speechSynthesis
 
 function speak(text) {
+    if (synth.speaking) {
+        synth.cancel()
+        setTimeout(function(){
+            synth.speak(text)
+        }, 250); 
+    }
     if (text !== '') {
         let utterThis = new SpeechSynthesisUtterance(text)
         synth.speak(utterThis)
