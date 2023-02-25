@@ -1,5 +1,6 @@
 const featureExtractor = ml5.featureExtractor('MobileNet', modelLoaded);
 const objectiveDiv = document.getElementById("objective")
+const instructions = document.getElementById("instructions")
 let objective = ""
 const randomiserArray = ["dog", "cat", "bird"]
 const input = document.getElementById("file")
@@ -20,6 +21,7 @@ function randomizeObjective() {
 
 function startGame() {
     if(startGamebtn) startGamebtn.remove()
+    if(instructions) instructions.remove()
 
     objectiveDiv.innerHTML = "Take a picture of a " + objective
     speak("Take a picture of a " + objective)
@@ -34,10 +36,10 @@ function restart() {
     retrybtn.style.display = "none"
     input.value = null
     input.style.display = "inline-block"
+    console.log(img.src)
     URL.revokeObjectURL(img.src)
     img.src = ''
 }
-
 function fileAdded() {
     input.style.display = "none"
     img.src = URL.createObjectURL(event.target.files[0])
@@ -49,14 +51,12 @@ function fileAdded() {
 function classify() {
     classifier.classify(img, (err, result) => {
         if(err) console.log(err)
-        console.log(objective)
-        console.log(result)
         if(result[0].label == objective){
-            objectiveDiv.innerHTML = "Correct! That is a "+objective+" "+result[0].confidence
-            speak("Correct! That is a "+objective)
+            objectiveDiv.innerHTML = "Correct! I am "+result[0].confidence.toString().substring(2,4)+"% positive that that is a "+result[0].label+"."
+            speak("Correct! I am "+result[0].confidence.toString().substring(2,4)+"% positive that that is a "+result[0].label+".")
         }else{
-            objectiveDiv.innerHTML = "That is not a "+objective+". That is a "+result[0].label+" "+result[0].confidence
-            speak("That is not a "+objective+". That is a "+result[0].label)
+            objectiveDiv.innerHTML = "That is not a "+objective+". I am "+result[0].confidence.toString().substring(2,4)+"% positive that that is a "+result[0].label+"."
+            speak("That is not a "+objective+". I am "+result[0].confidence.toString().substring(2,4)+"% positive that that is a "+result[0].label+".")
         }
     })
 }

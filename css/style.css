@@ -41,18 +41,15 @@ video {
     flex-direction: column;
 }
 
-#objective {
+#objective, #file, #retry, #output {
     display: none;
 }
 
-#file {
-    display: none;
+#instructions {
+    text-align: center;
 }
 
-#retry {
-    display: none;
-}
-
-#output {
-    display: none;
+span {
+    font-weight: bold;
+    color: red;
 }
