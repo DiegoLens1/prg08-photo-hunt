@@ -2,7 +2,7 @@ const featureExtractor = ml5.featureExtractor('MobileNet', modelLoaded);
 const objectiveDiv = document.getElementById("objective")
 const instructions = document.getElementById("instructions")
 let objective = ""
-const randomiserArray = ["dog", "cat", "bird"]
+const randomiserArray = ["Oven mitt", "Phone", "Knife", "Contoller", "Banana"]
 let score = 0
 const scoreDiv = document.getElementById("score")
 const input = document.getElementById("file")
@@ -17,7 +17,7 @@ startGamebtn.addEventListener("click", () => randomizeObjective());
 retrybtn.addEventListener("click", () => restart());
 
 function randomizeObjective() {
-    objective = randomiserArray[Math.floor((Math.random() * 3))]
+    objective = randomiserArray[Math.floor((Math.random() * randomiserArray.length))]
     startGame()
 }
 
